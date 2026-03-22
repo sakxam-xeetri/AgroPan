@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Data — Admin — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Sensor Data</h1>
+        <p class="page__subtitle">View and manage all IoT sensor readings.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            class="form-input"
+            id="searchInput"
+            placeholder="Search by device name…"
+          />
+        </div>
+        <button class="btn btn--primary btn--sm" id="addBtn">
+          <i class="fa-solid fa-plus"></i> Add Reading
+        </button>
+      </div>
+
+      <span class="toolbar__count" id="rowCount"></span>
+
+      <div class="card">
+        <div class="card__body card__body--flush">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Device</th>
+                  <th>Temp (°C)</th>
+                  <th>Moisture (%)</th>
+                  <th>Humidity (%)</th>
+                  <th>Gases (ppm)</th>
+                  <th>Nitrogen (mg/kg)</th>
+                  <th>Timestamp</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <td
+                    colspan="9"
+                    style="
+                      text-align: center;
+                      color: var(--color-text-light);
+                      padding: var(--space-xl);
+                    "
+                  >
+                    <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create / Edit Modal -->
+    <div class="modal-overlay" id="formModal">
+      <div class="modal">
+        <div class="modal__header">
+          <h3 class="modal__title" id="modalTitle">Add Sensor Reading</h3>
+          <button class="modal__close" id="modalClose">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body">
+          <input type="hidden" id="fId" />
+          <div class="form-group">
+            <label class="form-label">Device Name *</label>
+            <input
+              type="text"
+              class="form-input"
+              id="fDevice"
+              placeholder="e.g. Field-Sensor-A1"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Temperature (°C) *</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-input"
+                id="fTemp"
+                placeholder="28.5"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Moisture (%) *</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-input"
+                id="fMoisture"
+                placeholder="65"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Humidity (%) *</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-input"
+                id="fHumidity"
+                placeholder="72"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gases (ppm) *</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-input"
+                id="fGases"
+                placeholder="12"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nitrogen (mg/kg) *</label>
+            <input
+              type="number"
+              step="0.1"
+              class="form-input"
+              id="fNitrogen"
+              placeholder="40"
+            />
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost btn--sm" id="modalCancel">
+            Cancel
+          </button>
+          <button class="btn btn--primary btn--sm" id="modalSave">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirm -->
+    <div class="confirm-overlay" id="deleteConfirm">
+      <div class="confirm-dialog">
+        <div class="confirm-dialog__icon">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+        <h3 class="confirm-dialog__title">Delete Reading?</h3>
+        <p class="confirm-dialog__text">
+          This sensor data point will be permanently removed.
+        </p>
+        <div class="confirm-dialog__actions">
+          <button class="btn btn--ghost btn--sm" id="deleteCancel">
+            Cancel
+          </button>
+          <button class="btn btn--danger btn--sm" id="deleteOk">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+  </body>
+</html>

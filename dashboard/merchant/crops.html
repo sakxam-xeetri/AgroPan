@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Crops — AgroPan Merchant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      .crop-card__image {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--space-md);
+        background: var(--color-bg);
+      }
+      .crop-card__name {
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+        margin-bottom: var(--space-xs);
+      }
+      .crop-card__price {
+        font-size: var(--text-lg);
+        font-weight: var(--weight-bold);
+        color: var(--color-secondary);
+        margin-bottom: var(--space-sm);
+      }
+      .crop-card__meta {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      .crop-card__actions {
+        display: flex;
+        gap: var(--space-xs);
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--color-border-light);
+      }
+      /* Search bar */
+      .search-bar {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+      }
+      .search-bar .form-input {
+        flex: 1;
+        min-width: 180px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Browse Crops</h1>
+        <p class="page__subtitle">
+          Discover fresh produce from local farmers across Nepal.
+        </p>
+        <div class="page__actions search-bar">
+          <input
+            type="text"
+            class="form-input"
+            id="cropSearch"
+            placeholder="Search by crop name…"
+            style="max-width: 280px"
+          />
+          <select
+            class="form-input form-select"
+            id="cropFilter"
+            style="max-width: 180px"
+          >
+            <option value="">All Types</option>
+            <option value="grain">Grain</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="fruit">Fruit</option>
+            <option value="spice">Spice</option>
+            <option value="pulse">Pulse</option>
+          </select>
+          <select
+            class="form-input form-select"
+            id="cropSort"
+            style="max-width: 180px"
+          >
+            <option value="newest">Newest First</option>
+            <option value="price-low">Price: Low → High</option>
+            <option value="price-high">Price: High → Low</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results info -->
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: var(--space-md);
+        "
+      >
+        <span
+          id="resultCount"
+          style="font-size: var(--text-sm); color: var(--color-text-muted)"
+        ></span>
+      </div>
+
+      <!-- Crops Grid -->
+      <div class="item-list" id="cropsList">
+        <div
+          style="
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+          "
+        >
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem"></i>
+          <p style="margin-top: var(--space-md)">Loading crops…</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crop Detail Modal -->
+    <div class="modal-overlay" id="cropDetailModal">
+      <div class="modal" style="max-width: 560px">
+        <div class="modal__header">
+          <h3 class="modal__title" id="detailTitle">Crop Details</h3>
+          <button class="modal__close" id="closeDetail">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body" id="detailBody">
+          <!-- Populated by JS -->
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost btn--sm" id="closeDetailBtn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/crops.js"></script>
+  </body>
+</html>

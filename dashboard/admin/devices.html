@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devices — Admin — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Devices</h1>
+        <p class="page__subtitle">Manage all registered IoT sensor devices.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            class="form-input"
+            id="searchInput"
+            placeholder="Search by name, location, owner…"
+          />
+        </div>
+        <button class="btn btn--primary btn--sm" id="addBtn">
+          <i class="fa-solid fa-plus"></i> Add Device
+        </button>
+      </div>
+
+      <span class="toolbar__count" id="rowCount"></span>
+
+      <div class="card">
+        <div class="card__body card__body--flush">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Owner</th>
+                  <th>Last Ping</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <td
+                    colspan="6"
+                    style="
+                      text-align: center;
+                      color: var(--color-text-light);
+                      padding: var(--space-xl);
+                    "
+                  >
+                    <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create / Edit Modal -->
+    <div class="modal-overlay" id="formModal">
+      <div class="modal">
+        <div class="modal__header">
+          <h3 class="modal__title" id="modalTitle">Add Device</h3>
+          <button class="modal__close" id="modalClose">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body">
+          <input type="hidden" id="fId" />
+          <div class="form-group">
+            <label class="form-label">Device Name *</label>
+            <input
+              type="text"
+              class="form-input"
+              id="fName"
+              placeholder="e.g. Field-Sensor-A1"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Location *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="fLocation"
+                placeholder="e.g. Chitwan East Plot"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Owner (username) *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="fOwner"
+                placeholder="Username of device owner"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost btn--sm" id="modalCancel">
+            Cancel
+          </button>
+          <button class="btn btn--primary btn--sm" id="modalSave">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirm -->
+    <div class="confirm-overlay" id="deleteConfirm">
+      <div class="confirm-dialog">
+        <div class="confirm-dialog__icon">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+        <h3 class="confirm-dialog__title">Delete Device?</h3>
+        <p class="confirm-dialog__text">
+          This device and its association will be permanently removed.
+        </p>
+        <div class="confirm-dialog__actions">
+          <button class="btn btn--ghost btn--sm" id="deleteCancel">
+            Cancel
+          </button>
+          <button class="btn btn--danger btn--sm" id="deleteOk">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/devices.js"></script>
+  </body>
+</html>

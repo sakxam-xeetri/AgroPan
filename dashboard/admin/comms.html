@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum &amp; Emails — Admin — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      /* ── Tab Bar ─────────────────────────────────────── */
+      .tab-bar {
+        display: flex;
+        gap: var(--space-xs);
+        border-bottom: 2px solid var(--color-border-light);
+        margin-bottom: var(--space-lg);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-bar__btn {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semibold);
+        color: var(--color-text-muted);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      .tab-bar__btn.is-active {
+        color: var(--admin-accent);
+        border-bottom-color: var(--admin-accent);
+      }
+      .tab-bar__btn:hover {
+        color: var(--admin-accent-light);
+      }
+      .tab-bar__btn .count-badge {
+        background: var(--color-bg-muted);
+        color: var(--color-text-muted);
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: var(--radius-full);
+        font-weight: var(--weight-semibold);
+      }
+      .tab-bar__btn.is-active .count-badge {
+        background: var(--admin-accent);
+        color: #fff;
+      }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.is-active {
+        display: block;
+      }
+      /* ── Answer row indent ──────────────────────────── */
+      .answer-row {
+        background: var(--color-bg-muted);
+      }
+      .answer-row td:first-child {
+        padding-left: var(--space-xl);
+      }
+
+      /* ── Comms-specific table & layout fixes ────────── */
+      .card {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--color-border-light);
+        background: var(--color-bg-card);
+      }
+      .card__body {
+        padding: 0 !important;
+      }
+      .table {
+        min-width: 580px;
+      }
+      .table th {
+        background: var(--color-bg);
+        padding: var(--space-sm) var(--space-md);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+      }
+      .table td {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+        vertical-align: middle;
+      }
+      .table tbody tr {
+        border-bottom: 1px solid var(--color-border-light);
+      }
+      .table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+      }
+      .toolbar__search {
+        position: relative;
+        flex: 1;
+        min-width: 180px;
+      }
+      .toolbar__search i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-text-light);
+        font-size: 13px;
+      }
+      .toolbar__input {
+        width: 100%;
+        padding: 8px 10px 8px 32px;
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        background: var(--color-bg-card);
+      }
+      .toolbar__input:focus {
+        outline: none;
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px rgba(74, 91, 199, 0.12);
+      }
+      .toolbar__filter {
+        padding: 8px 12px;
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        background: var(--color-bg-card);
+      }
+      .toolbar__count {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+      }
+      @media (max-width: 600px) {
+        .tab-bar {
+          gap: 0;
+        }
+        .tab-bar__btn {
+          padding: var(--space-xs) var(--space-sm);
+          font-size: 12px;
+        }
+        .table {
+          min-width: 500px;
+        }
+        .table th,
+        .table td {
+          padding: 6px 8px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">
+          <i class="fa-solid fa-comments"></i> Forum &amp; Emails
+        </h1>
+        <p class="page__subtitle">
+          Manage email subscribers, community questions and answers.
+        </p>
+      </div>
+
+      <!-- ═══ Tab Bar ═══ -->
+      <div class="tab-bar" id="tabBar">
+        <button class="tab-bar__btn is-active" data-tab="emails">
+          <i class="fa-solid fa-envelope"></i> Subscribers
+          <span class="count-badge" id="emailCount">0</span>
+        </button>
+        <button class="tab-bar__btn" data-tab="questions">
+          <i class="fa-solid fa-circle-question"></i> Questions
+          <span class="count-badge" id="questionCount">0</span>
+        </button>
+        <button class="tab-bar__btn" data-tab="answers">
+          <i class="fa-solid fa-reply"></i> Answers
+          <span class="count-badge" id="answerCount">0</span>
+        </button>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  TAB 1 — Email Subscribers                     -->
+      <!-- ═══════════════════════════════════════════════ -->
+      <div class="tab-panel is-active" id="panelEmails">
+        <div class="toolbar">
+          <div class="toolbar__search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              class="toolbar__input"
+              id="emailSearch"
+              placeholder="Search by name or email…"
+            />
+          </div>
+          <select class="toolbar__filter" id="emailFilter">
+            <option value="">All</option>
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+          </select>
+          <button class="btn btn--primary btn--sm" id="addEmail">
+            <i class="fa-solid fa-plus"></i> Add
+          </button>
+        </div>
+        <div class="card">
+          <div class="card__body" style="padding: 0; overflow-x: auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Subscribed</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="emailTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="toolbar"
+          style="justify-content: flex-start; margin-top: var(--space-sm)"
+        >
+          <span class="toolbar__count" id="emailRowCount">0 subscribers</span>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  TAB 2 — Questions                             -->
+      <!-- ═══════════════════════════════════════════════ -->
+      <div class="tab-panel" id="panelQuestions">
+        <div class="toolbar">
+          <div class="toolbar__search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              class="toolbar__input"
+              id="questionSearch"
+              placeholder="Search questions…"
+            />
+          </div>
+          <select class="toolbar__filter" id="questionFilter">
+            <option value="">All Types</option>
+            <option value="disease">Disease</option>
+            <option value="pest">Pest</option>
+            <option value="soil">Soil</option>
+            <option value="weather">Weather</option>
+            <option value="crop">Crop</option>
+            <option value="general">General</option>
+          </select>
+          <button class="btn btn--primary btn--sm" id="addQuestion">
+            <i class="fa-solid fa-plus"></i> Add
+          </button>
+        </div>
+        <div class="card">
+          <div class="card__body" style="padding: 0; overflow-x: auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Question</th>
+                  <th>Type</th>
+                  <th>Asked By</th>
+                  <th>Votes</th>
+                  <th>Answers</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="questionTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="toolbar"
+          style="justify-content: flex-start; margin-top: var(--space-sm)"
+        >
+          <span class="toolbar__count" id="questionRowCount">0 questions</span>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  TAB 3 — Answers                               -->
+      <!-- ═══════════════════════════════════════════════ -->
+      <div class="tab-panel" id="panelAnswers">
+        <div class="toolbar">
+          <div class="toolbar__search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              class="toolbar__input"
+              id="answerSearch"
+              placeholder="Search answers…"
+            />
+          </div>
+          <button class="btn btn--primary btn--sm" id="addAnswer">
+            <i class="fa-solid fa-plus"></i> Add
+          </button>
+        </div>
+        <div class="card">
+          <div class="card__body" style="padding: 0; overflow-x: auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Answer</th>
+                  <th>Answered By</th>
+                  <th>Votes</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="answerTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="toolbar"
+          style="justify-content: flex-start; margin-top: var(--space-sm)"
+        >
+          <span class="toolbar__count" id="answerRowCount">0 answers</span>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!--  Modals                                        -->
+      <!-- ═══════════════════════════════════════════════ -->
+
+      <!-- Email Modal -->
+      <div class="modal" id="emailModal">
+        <div class="modal__box">
+          <div class="modal__header">
+            <h3 class="modal__title" id="emailModalTitle">New Subscriber</h3>
+            <button class="modal__close" id="emailModalClose">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal__body">
+            <input type="hidden" id="eId" />
+            <div class="form-group">
+              <label class="form-label">Name *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="eName"
+                placeholder="Subscriber name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input
+                type="email"
+                class="form-input"
+                id="eEmail"
+                placeholder="email@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-select" id="eActive">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal__footer">
+            <button class="btn btn--ghost btn--sm" id="emailModalCancel">
+              Cancel
+            </button>
+            <button class="btn btn--primary btn--sm" id="emailModalSave">
+              <i class="fa-solid fa-check"></i> Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Modal -->
+      <div class="modal" id="questionModal">
+        <div class="modal__box">
+          <div class="modal__header">
+            <h3 class="modal__title" id="questionModalTitle">New Question</h3>
+            <button class="modal__close" id="questionModalClose">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal__body">
+            <input type="hidden" id="qId" />
+            <div class="form-group">
+              <label class="form-label">Question *</label>
+              <textarea
+                class="form-input"
+                id="qText"
+                rows="3"
+                placeholder="Enter the question…"
+              ></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Type *</label>
+                <select class="form-select" id="qType">
+                  <option value="disease">Disease</option>
+                  <option value="pest">Pest</option>
+                  <option value="soil">Soil</option>
+                  <option value="weather">Weather</option>
+                  <option value="crop">Crop</option>
+                  <option value="general">General</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Asked By *</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="qAskedBy"
+                  placeholder="username"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal__footer">
+            <button class="btn btn--ghost btn--sm" id="questionModalCancel">
+              Cancel
+            </button>
+            <button class="btn btn--primary btn--sm" id="questionModalSave">
+              <i class="fa-solid fa-check"></i> Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Answer Modal -->
+      <div class="modal" id="answerModal">
+        <div class="modal__box">
+          <div class="modal__header">
+            <h3 class="modal__title" id="answerModalTitle">New Answer</h3>
+            <button class="modal__close" id="answerModalClose">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal__body">
+            <input type="hidden" id="aId" />
+            <div class="form-group" id="aQuestionGroup">
+              <label class="form-label">Question ID *</label>
+              <input
+                type="number"
+                class="form-input"
+                id="aQuestionId"
+                placeholder="e.g. 1"
+                min="1"
+              />
+              <span class="form-hint"
+                >The ID of the question this answers.</span
+              >
+            </div>
+            <div class="form-group">
+              <label class="form-label">Answer *</label>
+              <textarea
+                class="form-input"
+                id="aText"
+                rows="3"
+                placeholder="Enter the answer…"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Answered By *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="aAnsweredBy"
+                placeholder="username"
+              />
+            </div>
+          </div>
+          <div class="modal__footer">
+            <button class="btn btn--ghost btn--sm" id="answerModalCancel">
+              Cancel
+            </button>
+            <button class="btn btn--primary btn--sm" id="answerModalSave">
+              <i class="fa-solid fa-check"></i> Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Confirm -->
+      <div class="confirm-dialog" id="deleteConfirm">
+        <div class="confirm-dialog__box">
+          <div class="confirm-dialog__icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3 class="confirm-dialog__title">Delete Record?</h3>
+          <p class="confirm-dialog__text">
+            This action is permanent and cannot be undone.
+          </p>
+          <div class="confirm-dialog__actions">
+            <button class="btn btn--ghost btn--sm" id="deleteCancel">
+              Cancel
+            </button>
+            <button class="btn btn--danger btn--sm" id="deleteOk">
+              <i class="fa-solid fa-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/comms.js"></script>
+  </body>
+</html>

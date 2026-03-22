@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AgroPan Community Forum — Ask questions, share knowledge, and connect with farmers and merchants across Nepal."
+    />
+    <title>Forum — AgroPan</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared design tokens -->
+    <link rel="stylesheet" href="../css/variables.css" />
+    <!-- Forum styles -->
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="../gallery/logo-agropan.jpg" type="image/jpeg" />
+  </head>
+
+  <body>
+    <!-- ── NAVBAR ── -->
+    <nav class="forum-nav" id="forum-nav">
+      <div class="forum-nav__inner">
+        <a href="../index.html" class="forum-nav__brand">
+          <img
+            src="../gallery/logo-agropan.jpg"
+            alt="AgroPan Logo"
+            width="36"
+            height="36"
+          />
+          <span>Agro<span class="forum-nav__accent">Pan</span></span>
+        </a>
+        <div class="forum-nav__title">Community Forum</div>
+        <div class="forum-nav__auth" id="nav-auth">
+          <!-- Filled by JS based on auth status -->
+          <a
+            href="../login.html"
+            class="btn btn--primary btn--sm"
+            id="nav-login-btn"
+            >Log In</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="forum-main">
+      <!-- Header bar with filters and ask button -->
+      <div class="forum-header">
+        <div class="forum-header__left">
+          <h1 class="forum-header__title">Discussion Forum</h1>
+          <p class="forum-header__sub">
+            Ask questions, share knowledge, help the community
+          </p>
+        </div>
+        <div class="forum-header__right">
+          <button class="btn btn--primary" id="ask-btn" style="display: none">
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              width="16"
+              height="16"
+            >
+              <path d="M8 3v10M3 8h10" />
+            </svg>
+            Ask Question
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter / type tabs -->
+      <div class="forum-filters" id="forum-filters">
+        <button class="forum-filter active" data-type="all">All</button>
+        <button class="forum-filter" data-type="crop">Crop</button>
+        <button class="forum-filter" data-type="market">Market</button>
+        <button class="forum-filter" data-type="disease">Disease</button>
+        <button class="forum-filter" data-type="tech">Tech</button>
+        <button class="forum-filter" data-type="general">General</button>
+      </div>
+
+      <!-- Login prompt (shown to guests) -->
+      <div class="forum-login-prompt" id="login-prompt" style="display: none">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          width="28"
+          height="28"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4M12 8h.01" />
+        </svg>
+        <div>
+          <strong>Want to participate?</strong>
+          <p>
+            <a href="../login.html">Log in</a> or
+            <a href="../signup.html">sign up</a> to ask questions, post answers,
+            and vote.
+          </p>
+        </div>
+      </div>
+
+      <!-- Questions list -->
+      <div class="forum-questions" id="questions-list">
+        <!-- Rendered by JS -->
+        <div class="forum-loading" id="loading">
+          <div class="forum-spinner"></div>
+          <p>Loading discussions…</p>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="forum-empty" id="empty-state" style="display: none">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-text-light)"
+          stroke-width="1.5"
+          width="48"
+          height="48"
+        >
+          <path
+            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+          />
+        </svg>
+        <h3>No discussions yet</h3>
+        <p>Be the first to start a conversation!</p>
+      </div>
+    </main>
+
+    <!-- ── ASK QUESTION MODAL ── -->
+    <div class="modal-overlay" id="ask-modal" style="display: none">
+      <div class="modal">
+        <div class="modal__header">
+          <h2>Ask a Question</h2>
+          <button class="modal__close" id="modal-close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <form class="modal__form" id="ask-form">
+          <div class="form-group">
+            <label for="q-type">Category</label>
+            <select id="q-type" required>
+              <option value="">Select category…</option>
+              <option value="crop">Crop Advice</option>
+              <option value="market">Market Discussion</option>
+              <option value="disease">Disease &amp; Pest</option>
+              <option value="tech">IoT &amp; Tech</option>
+              <option value="general">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="q-text">Your Question</label>
+            <textarea
+              id="q-text"
+              rows="4"
+              placeholder="Describe your question in detail…"
+              required
+            ></textarea>
+          </div>
+          <div class="modal__actions">
+            <button type="button" class="btn btn--ghost" id="modal-cancel">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn--primary" id="submit-btn">
+              Post Question
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── QUESTION DETAIL / ANSWERS MODAL ── -->
+    <div class="modal-overlay" id="detail-modal" style="display: none">
+      <div class="modal modal--wide">
+        <div class="modal__header">
+          <h2 id="detail-title">Question</h2>
+          <button class="modal__close" id="detail-close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <div class="detail-body" id="detail-body">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOAST NOTIFICATION ── -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="js/index.js"></script>
+  </body>
+</html>

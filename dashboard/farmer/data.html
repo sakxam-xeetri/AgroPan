@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Data — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Field Data</h1>
+        <p class="page__subtitle">Sensor readings from your IoT devices.</p>
+        <div class="page__actions">
+          <select
+            class="form-input form-select"
+            id="deviceFilter"
+            style="max-width: 220px"
+          >
+            <option value="">All Devices</option>
+          </select>
+          <button class="btn btn--ghost btn--sm" id="refreshData">
+            <i class="fa-solid fa-arrows-rotate"></i> Refresh
+          </button>
+        </div>
+      </div>
+
+      <!-- Latest Values Cards -->
+      <div class="stats-grid" id="liveStats">
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--danger">
+            <i class="fa-solid fa-temperature-half"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Temperature</div>
+            <div class="stat-card__value" id="liveTemp">— °C</div>
+            <div class="stat-card__meta">Latest reading</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--accent">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Soil Moisture</div>
+            <div class="stat-card__value" id="liveMoisture">— %</div>
+            <div class="stat-card__meta">Latest reading</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--primary">
+            <i class="fa-solid fa-water"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Humidity</div>
+            <div class="stat-card__value" id="liveHumidity">— %</div>
+            <div class="stat-card__meta">Latest reading</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--alert">
+            <i class="fa-solid fa-wind"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Gas Level</div>
+            <div class="stat-card__value" id="liveGas">— ppm</div>
+            <div class="stat-card__meta">Latest reading</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="card">
+        <div class="card__header">
+          <h3 class="card__title">All Readings</h3>
+          <span class="card__action" id="dataCount" style="cursor: default"
+            >0 records</span
+          >
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Device</th>
+                  <th>Temp (°C)</th>
+                  <th>Moisture (%)</th>
+                  <th>Humidity (%)</th>
+                  <th>Gas (ppm)</th>
+                  <th>N₂ (mg/kg)</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="dataBody">
+                <tr>
+                  <td
+                    colspan="7"
+                    style="
+                      text-align: center;
+                      color: var(--color-text-light);
+                      padding: var(--space-xl);
+                    "
+                  >
+                    <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+  </body>
+</html>

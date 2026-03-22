@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AgroPan Merchant Dashboard — browse crops, connect with farmers, manage purchases."
+    />
+    <meta name="theme-color" content="#8B5E3C" />
+    <title>Merchant Dashboard — AgroPan</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Pro 7.1.0 -->
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+
+    <!-- Dashboard Styles -->
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../gallery/logo-agropan.jpg" type="image/jpeg" />
+  </head>
+
+  <body class="dashboard-shell">
+    <!-- ── Top Header ── -->
+    <header class="dash-header">
+      <div style="display: flex; align-items: center; gap: 8px">
+        <a href="../../index.html" class="dash-header__brand">
+          <img
+            src="../../gallery/logo-agropan.jpg"
+            alt="AgroPan"
+            width="32"
+            height="32"
+          />
+          <span class="dash-header__brand-text"
+            >Agro<span class="dash-header__brand-accent">Pan</span></span
+          >
+        </a>
+        <span class="dash-header__role-badge">Merchant</span>
+      </div>
+
+      <div class="dash-header__right">
+        <button
+          class="dash-header__user"
+          id="userMenuBtn"
+          aria-label="User menu"
+        >
+          <div class="dash-header__avatar" id="userAvatar">M</div>
+          <span id="userDisplayName">Merchant</span>
+          <i
+            class="fa-solid fa-chevron-down"
+            style="font-size: 10px; opacity: 0.5"
+          ></i>
+        </button>
+      </div>
+
+      <!-- User dropdown -->
+      <div class="user-dropdown" id="userDropdown">
+        <button class="user-dropdown__item" data-page="profile">
+          <i class="fa-solid fa-user"></i> My Profile
+        </button>
+        <div class="user-dropdown__divider"></div>
+        <a href="../../index.html" class="user-dropdown__item">
+          <i class="fa-solid fa-house"></i> Back to Home
+        </a>
+        <button
+          class="user-dropdown__item user-dropdown__item--danger"
+          id="logoutBtn"
+        >
+          <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Main Body ── -->
+    <div class="dash-body">
+      <!-- Sidebar (desktop) -->
+      <aside class="dash-sidebar">
+        <div class="dash-sidebar__label">Main Menu</div>
+        <nav class="dash-sidebar__nav">
+          <a
+            href="#"
+            class="dash-sidebar__link is-active"
+            data-page="dashboard"
+          >
+            <i class="fa-solid fa-grid-2"></i> Overview
+          </a>
+          <a href="#" class="dash-sidebar__link" data-page="crops">
+            <i class="fa-solid fa-basket-shopping"></i> Browse Crops
+          </a>
+          <a href="#" class="dash-sidebar__link" data-page="farmers">
+            <i class="fa-solid fa-tractor"></i> Farmers
+          </a>
+        </nav>
+
+        <div class="dash-sidebar__label" style="margin-top: var(--space-lg)">
+          Account
+        </div>
+        <nav class="dash-sidebar__nav">
+          <a href="#" class="dash-sidebar__link" data-page="profile">
+            <i class="fa-solid fa-user-gear"></i> Profile
+          </a>
+        </nav>
+
+        <div class="dash-sidebar__spacer"></div>
+
+        <div class="dash-sidebar__footer">
+          <a href="../../index.html" class="dash-sidebar__footer-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+          </a>
+        </div>
+      </aside>
+
+      <!-- Iframe Content -->
+      <main class="dash-content">
+        <iframe
+          class="dash-content__iframe"
+          id="contentFrame"
+          src="dashboard.html"
+          title="Dashboard content"
+        ></iframe>
+      </main>
+    </div>
+
+    <!-- ── Bottom Tab Bar (mobile) ── -->
+    <nav class="dash-tabs" aria-label="Dashboard navigation">
+      <a class="dash-tab is-active" data-page="dashboard">
+        <i class="fa-solid fa-grid-2"></i>
+        <span class="dash-tab__label">Overview</span>
+      </a>
+      <a class="dash-tab" data-page="crops">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="dash-tab__label">Crops</span>
+      </a>
+      <a class="dash-tab" data-page="farmers">
+        <i class="fa-solid fa-tractor"></i>
+        <span class="dash-tab__label">Farmers</span>
+      </a>
+      <a class="dash-tab" data-page="profile">
+        <i class="fa-solid fa-user"></i>
+        <span class="dash-tab__label">Profile</span>
+      </a>
+    </nav>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

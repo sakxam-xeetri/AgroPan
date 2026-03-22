@@ -1,0 +1,43 @@
+/* ============================================================
+   AgroPan — Signup Page Styles
+   ============================================================
+   Imports the shared auth styles from login.css.
+   Only signup-specific overrides below.
+   ============================================================ */
+
+@import url('login.css');
+
+/* Signup card is slightly wider to fit more fields */
+.auth__card {
+    max-width: 500px;
+}
+
+/* Terms checkbox label */
+.auth__terms {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.auth__terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.auth__terms a {
+    font-weight: var(--weight-medium);
+    color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .auth__card {
+        max-width: 520px;
+    }
+}

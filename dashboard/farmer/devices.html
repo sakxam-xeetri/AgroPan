@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Devices — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">My Devices</h1>
+        <p class="page__subtitle">
+          Manage your IoT sensors and monitoring stations.
+        </p>
+        <div class="page__actions">
+          <button class="btn btn--primary btn--sm" id="addDeviceBtn">
+            <i class="fa-solid fa-plus"></i> Add Device
+          </button>
+        </div>
+      </div>
+
+      <!-- Alert area -->
+      <div id="deviceAlert"></div>
+
+      <!-- Devices grid -->
+      <div class="item-list" id="devicesList">
+        <div
+          style="
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+          "
+        >
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem"></i>
+          <p style="margin-top: var(--space-md)">Loading devices…</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add / Edit Device Modal -->
+    <div class="modal-overlay" id="deviceModal">
+      <div class="modal">
+        <div class="modal__header">
+          <h3 class="modal__title" id="modalTitle">Add Device</h3>
+          <button class="modal__close" id="closeModal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body">
+          <form id="deviceForm">
+            <div style="margin-bottom: var(--space-md)">
+              <label class="form-label">Device Name *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="deviceName"
+                placeholder="e.g. Field Sensor A1"
+                required
+              />
+            </div>
+            <div style="margin-bottom: var(--space-md)">
+              <label class="form-label">Location *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="deviceLocation"
+                placeholder="e.g. Chitwan, Plot 3"
+                required
+              />
+            </div>
+            <input type="hidden" id="deviceEditId" />
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost btn--sm" id="cancelModal">
+            Cancel
+          </button>
+          <button class="btn btn--primary btn--sm" id="saveDevice">
+            Save Device
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/devices.js"></script>
+  </body>
+</html>

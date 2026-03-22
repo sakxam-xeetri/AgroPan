@@ -1,0 +1,581 @@
+================================================================================
+  AGROPAN — PROJECT PROGRESS LOG
+  Nepal's Smart Agriculture Platform
+  Ren Hackathon Spark
+================================================================================
+
+Last Updated: 2026-02-11
+
+================================================================================
+  PROJECT OVERVIEW
+================================================================================
+
+AgroPan is a Nepal-focused smart agriculture platform combining ESP32-S3
+IoT field sensors with a digital marketplace, community forum, and
+emergency alert system. Connects farmers, merchants, and administrators
+on a single platform. Built as a zero-dependency, client-side landing
+page with plans for full-stack backend integration.
+
+Tech Stack: HTML5 + CSS3 (Custom Properties) + Vanilla JS (ES5+)
+            PHP 8.0.30 + MariaDB 10.4.32 (XAMPP) for backend API
+Dependencies: Zero (frontend — no frameworks, no build tools, no npm)
+CSS Architecture: variables.css (tokens) + index.css (unified stylesheet)
+API Architecture: PHP CRUD folders (create/read/update/delete) + PDO
+
+Platform Pillars:
+  1. IoT Field Device — ESP32-S3 sensor node → web API
+  2. Marketplace — crop prices, farmer ↔ merchant accounts
+  3. Community Forum — registered farmer & merchant discussions
+  4. Emergency Alerts — admin-broadcast disease/disaster warnings
+
+================================================================================
+  COMPLETION STATUS
+================================================================================
+
+  Overall Progress: ~85%
+
+  [DONE] Core HTML Structure (index.html — fully rewritten)       — 100%
+  [DONE] CSS Design System (variables + unified index.css)        — 100%
+  [DONE] Navigation (desktop + mobile hamburger + glass-morphism) — 100%
+  [DONE] Hero Section (background, preview card, stats strip)     — 100%
+  [DONE] Features Overview (4 cards: IoT, Market, Forum, Alerts)  — 100%
+  [DONE] Smart Field Device Section (ESP32, sensors, specs)       — 100%
+  [DONE] Marketplace Section (farmer/merchant role split)         — 100%
+  [DONE] Community Forum Section (6 topic cards)                  — 100%
+  [DONE] Emergency Alerts (4 alert types + delivery channels)     — 100%
+  [DONE] How It Works (4-step process flow, updated)              — 100%
+  [DONE] Insight Gallery (8-card image grid)                      — 100%
+  [DONE] CTA Section (farmer/merchant dual CTAs)                  — 100%
+  [DONE] Footer (brand, links, no Nepal flag)                     — 100%
+  [DONE] Scroll Reveal Animations (Intersection Observer)         — 100%
+  [DONE] Main App Controller (nav, smooth scroll, counters)       — 100%
+  [DONE] Responsive Design (mobile-first, 3 breakpoints)          — 100%
+  [DONE] Accessibility (ARIA, focus states, reduced-motion)       — 100%
+  [DONE] README & Architecture Docs (updated for new features)    — 100%
+  [DONE] Gallery image naming & organization                      — 100%
+  [DONE] CSS optimization & consolidation                         — 100%
+  [DONE] SEO (meta, OG, Twitter, JSON-LD, favicon)                — 100%
+  [DONE] Logo integration (navbar + footer)                       — 100%
+  [DONE] API folder structure (8 tables × 4 CRUD = 32 endpoints)  — 100%
+  [DONE] API documentation (API-walkthrough.md v2.0)              — 100%
+  [DONE] Database connection (database.php — PDO + helpers)       — 100%
+  [DONE] Emails subscription table + CRUD files                   — 100%
+  [DONE] Email notification system (live in data & warnings)      — 100%
+  [DONE] Create APIs — all 8 tables fully implemented              — 100%
+  [DONE] Warnings schema fix (title/details → text)               — 100%
+  [DONE] Unix timestamps everywhere (no YYYY-MM-DD anywhere)      — 100%
+
+  [REMOVED] Simulation Panel — replaced by Marketplace feature
+  [REMOVED] Simulation Engine (simulate.js) — no longer loaded
+  [REMOVED] Live Monitoring Dashboard — no mock data on landing page
+  [REMOVED] Why Nepal Section — replaced by Features Overview
+  [REMOVED] Nepal Flag SVG in footer — removed per user request
+
+  [DONE] Read APIs — all 8 tables fully implemented               — 100%
+  [TODO] Update APIs — all 8 tables                               —   0%
+  [TODO] Delete APIs — all 8 tables                               —   0%
+  [TODO] Real-time forum w/ thread creation & replies             —   0%
+  [TODO] Admin dashboard for alert broadcasting                   —   0%
+  [TODO] Multi-language support (English + Nepali i18n)           —   0%
+  [TODO] IoT data dashboard with historical charts                —   0%
+  [TODO] Mobile app (PWA) with push notifications                 —   0%
+
+================================================================================
+  CHANGE LOG
+================================================================================
+
+--- [2026-02-11] Session #1 — Project Audit & Cleanup ---
+
+  FEATURE: Gallery Image Rename & Organization
+  STATUS:  COMPLETED
+  DETAILS:
+    - Audited all 34 gallery images (mixed naming: UUIDs, stock IDs,
+      random strings, spaces in filenames)
+    - Renamed all images to a consistent format:
+        category-description.ext
+      Categories: hero, iot, landscape, farm, nepal, crop, drone, logo
+    - Updated all image references in index.html (14 <img> src attributes)
+    - No broken links after rename
+    - File: `iot` (no extension) left as-is — appears to be a
+      non-image file or placeholder
+
+  FEATURE: Progress Tracking System
+  STATUS:  COMPLETED
+  DETAILS:
+    - Created progress.log (this file) for systematic feature tracking
+    - Documents current project state, completion percentages,
+      and change history
+
+--- [2026-02-11] Session #2 — CSS Optimization, SEO, Logo Integration ---
+
+  FEATURE: CSS Consolidation & Optimization
+  STATUS:  COMPLETED
+  DETAILS:
+    - Merged base.css, layout.css, components.css content into index.css
+    - Restructured CSS in correct cascade order:
+        1. Reset & Base
+        2. Layout (container, sections, navbar, grids)
+        3. Components (buttons, hero, platform, alerts, gallery, etc.)
+        4. Animations (scroll reveal, stagger effects)
+        5. Responsive breakpoints (consolidated at end)
+    - Removed all duplicate rules and scattered media queries
+    - Consolidated media queries into 3 breakpoint blocks (640/768/1024px)
+    - Deleted empty base.css, layout.css, components.css files
+
+  FEATURE: Logo Integration
+  STATUS:  COMPLETED
+  DETAILS:
+    - Replaced inline SVG logo in navbar with <img> using logo-agropan.jpg
+    - Replaced inline SVG logo in footer with <img> using logo-agropan.jpg
+    - Updated favicon and apple-touch-icon
+
+  FEATURE: SEO Enhancements
+  STATUS:  COMPLETED
+  DETAILS:
+    - Added Open Graph, Twitter Card, canonical URL, robots, author meta
+    - Added JSON-LD structured data (WebApplication schema)
+
+--- [2026-02-12] Session #3 — Landing Page Overhaul ---
+
+  FEATURE: Complete Landing Page Reimagining
+  STATUS:  COMPLETED
+  DETAILS:
+    - Removed simulation form/panel entirely
+    - Removed live monitoring dashboard (mock data)
+    - Removed Nepal flag SVG from footer
+    - Removed "Why Nepal" section
+    - Removed simulate.js script reference from HTML
+
+    - Added Features Overview section (4 cards: IoT, Marketplace,
+      Community Forum, Emergency Alerts)
+    - Added Marketplace section with farmer/merchant role split,
+      dedicated feature lists per role
+    - Added Community Forum section with 6 topic cards (Disease,
+      Market Trends, Weather, Equipment, Success Stories, Seasonal)
+    - Updated Emergency Alerts to be admin-driven (disease outbreaks,
+      pest invasions, landslides, severe weather)
+    - Updated Hero to reflect full platform ("Monitor Your Fields.
+      Connect with the Market.")
+    - Updated How It Works steps (Create Account → Connect Device →
+      Trade & Discuss → Grow Together)
+    - Updated CTA with farmer/merchant dual CTAs
+    - Updated footer (removed flag, cleaned positioning text)
+    - Updated navbar links (Features, Marketplace, Community, Alerts,
+      How It Works)
+
+  FEATURE: CSS Rebuild for New Sections
+  STATUS:  COMPLETED
+  DETAILS:
+    - Deleted old index.css and created new unified stylesheet
+    - Added .feature-card styles with 4 color icon variants
+    - Added .marketplace__layout, .marketplace__role,
+      .marketplace__role-header (farmer/merchant variants),
+      .marketplace__list
+    - Added .community__grid, .community__card
+    - Removed all .sim__* styles (~245 lines)
+    - Removed all .monitoring__* styles (~220 lines)
+    - Removed .footer__nepal*, .nepal__* styles
+    - Updated responsive breakpoints for new grid sections
+
+  FEATURE: JavaScript Cleanup
+  STATUS:  COMPLETED
+  DETAILS:
+    - Removed entire Simulation Form Handler from main.js
+      (sim-form, sim-placeholder, sim-results, all res-* references)
+    - Removed shake animation injection
+    - Removed simulate.js dependency
+    - Kept: nav scroll, mobile menu, smooth scroll, active section
+      highlighting, counter animation
+
+  FEATURE: Documentation Update
+  STATUS:  COMPLETED
+  DETAILS:
+    - Rewrote architecture.md to reflect 4-pillar platform
+    - Updated README.md: system overview, architecture diagram,
+      folder structure, key features (marketplace, forum, alerts)
+    - Updated progress.log (this file)
+    - Hardware guide in README preserved as-is
+
+--- [2026-02-12] Session #4 — API Folder Structure & Documentation ---
+
+  FEATURE: API Directory Scaffolding
+  STATUS:  COMPLETED
+  DETAILS:
+    - Analyzed agropan.sql schema (7 tables at the time: users,
+      crops, devices, data, questions, answers, warnings)
+    - Created API/ folder with 4 CRUD subfolders:
+        create/, read/, update/, delete/
+    - Created 28 empty PHP files (7 tables × 4 CRUD operations)
+    - Created database.php (empty placeholder)
+    - All files follow consistent naming: {table_name}.php
+
+  FEATURE: API Walkthrough Documentation
+  STATUS:  COMPLETED
+  DETAILS:
+    - Created API/API-walkthrough.md (v1.0) — comprehensive docs
+      for all 28 endpoints
+    - Documented request/response format, schema for every table,
+      example JSON payloads, error handling, status codes
+    - Included Quick Reference table for all endpoints
+    - Noted warnings table bug (title/details typed as int(11)
+      instead of text)
+
+--- [2026-02-13] Session #5 — Emails Table, Database Connection, Notifications ---
+
+  FEATURE: Emails Subscription Table
+  STATUS:  COMPLETED
+  DETAILS:
+    - Added `emails` table to agropan.sql (between devices & questions)
+    - Schema: email_id (PK, AUTO_INCREMENT), email (TEXT),
+      name (TEXT), subscribed_at (TEXT), is_active (TINYINT DEFAULT 1)
+    - Added PRIMARY KEY index and AUTO_INCREMENT for email_id
+    - Created 4 CRUD PHP files: create/emails.php, read/emails.php,
+      update/emails.php, delete/emails.php
+    - Database now has 8 tables (was 7)
+
+  FEATURE: Database Connection (database.php)
+  STATUS:  COMPLETED
+  DETAILS:
+    - Wrote centralized PDO database connection in API/database.php
+    - DSN: mysql:host=127.0.0.1;dbname=agropan;charset=utf8mb4
+    - PDO options: ERRMODE_EXCEPTION, FETCH_ASSOC, real prepared stmts
+    - CORS headers included (Access-Control-Allow-Origin: *)
+    - OPTIONS preflight handling
+    - Helper functions:
+        sendResponse() — standardized JSON response + exit
+        getJsonInput() — reads & validates raw JSON body
+        notifyAllSubscribers() — fans out emails to all active subs
+
+  FEATURE: Email Notification Stubs
+  STATUS:  COMPLETED
+  DETAILS:
+    - Added structural stubs to API/create/data.php:
+        - Includes database.php, validates required fields
+        - Commented-out notifyAllSubscribers() call ready to activate
+        - Email includes device name, all sensor values, timestamp
+    - Added structural stubs to API/create/warnings.php:
+        - Includes database.php, validates required fields
+        - Commented-out notifyAllSubscribers() call ready to activate
+        - Email includes alert title, details, validity period
+    - Both files ready for INSERT queries — uncomment notification
+      calls after INSERT logic is implemented
+
+  FEATURE: API Documentation Update (v2.0)
+  STATUS:  COMPLETED
+  DETAILS:
+    - Added Section 8: Emails API (full CRUD docs with schema,
+      request/response examples)
+    - Added "Email Notification Triggers" section documenting
+      auto-notifications from data.php and warnings.php
+    - Updated Table of Contents, Schema Summary, Directory Structure
+    - Added emails endpoints to Quick Reference table
+    - Bumped document version to 2.0
+
+--- [2026-02-11] Session #6 — Create APIs Implementation ---
+
+  FEATURE: All 8 Create API Endpoints — Fully Implemented
+  STATUS:  COMPLETED
+  DETAILS:
+    - Unix timestamps used everywhere (time()) — no date strings
+    - All endpoints: require database.php, validate input, use
+      prepared statements, return JSON with inserted ID
+
+    create/users.php:
+      - Accepts: username, email, name, location, type, password
+      - Hashes password with bcrypt (password_hash)
+      - Checks duplicate username/email before insert
+      - Sets last_login = current Unix timestamp
+      - Validates type is 'farmer' or 'merchant'
+
+    create/crops.php:
+      - Accepts: name, image, type, price
+      - Sets last_updated = current Unix timestamp
+
+    create/devices.php:
+      - Accepts: name, location, owned_by
+      - Sets last_ping = current Unix timestamp
+
+    create/data.php:
+      - Accepts: temperature, moisture, humidity, gases, nitrogen, device
+      - Sets timestamp = current Unix timestamp (server-side)
+      - Triggers notifyAllSubscribers() after insert (LIVE)
+
+    create/emails.php:
+      - Accepts: email, name
+      - Validates email format (filter_var)
+      - Checks duplicate email before insert
+      - Sets subscribed_at = current Unix timestamp, is_active = 1
+
+    create/questions.php:
+      - Accepts: question, type, asked_by
+      - Initializes upvotes='0', downvotes='0', answers=''
+
+    create/answers.php:
+      - Accepts: question_id, answer, answered_by
+      - Validates parent question exists
+      - Initializes upvotes='0', downvotes='0'
+      - Appends new answer_id to parent question's answers field
+
+    create/warnings.php:
+      - Accepts: title, details, valid_till (Unix timestamp)
+      - Sets timestamp = current Unix timestamp (server-side)
+      - Triggers notifyAllSubscribers() after insert (LIVE)
+
+  FEATURE: Warnings Table Schema Fix
+  STATUS:  COMPLETED
+  DETAILS:
+    - Fixed agropan.sql: title and details columns changed from
+      int(11) to text (was a schema bug since the original dump)
+    - timestamp and valid_till also changed to text for consistency
+      (all columns in all tables store values as text)
+
+--- [2026-02-11] Session #7 — Read APIs Implementation ---
+
+  FEATURE: All 8 Read API Endpoints — Fully Implemented
+  STATUS:  COMPLETED
+  DETAILS:
+    - All endpoints: require database.php, use prepared statements,
+      return JSON array. Support fetch-by-ID or fetch-all.
+    - Password field excluded from users read responses.
+
+    read/users.php:
+      - By user_id or all. Excludes password from output.
+      - Ordered by user_id DESC.
+
+    read/crops.php:
+      - By crop_id, filter by type, or all.
+      - Ordered by crop_id DESC.
+
+    read/devices.php:
+      - By device_id, filter by owned_by, or all.
+      - Ordered by device_id DESC.
+
+    read/data.php:
+      - By data_id, filter by device name, or all.
+      - Ordered by timestamp DESC (newest first).
+
+    read/emails.php:
+      - By email_id, all active (default), or all including inactive
+        (pass { "all": true }).
+      - Ordered by email_id DESC.
+
+    read/questions.php:
+      - By question_id, filter by type, or all.
+      - Ordered by question_id DESC.
+
+    read/answers.php:
+      - By answer_id, by question_id (looks up question's comma-
+        separated answers field, then fetches matching answers
+        via WHERE IN), or all.
+      - By-question ordered ASC, all ordered DESC.
+
+    read/warnings.php:
+      - By warning_id, active only ({ "active": true } — filters
+        where valid_till > current Unix time), or all.
+      - Ordered by timestamp DESC (newest first).
+
+--- [2026-02-11] Session #8 — Update APIs + API Walkthrough Fix ---
+
+  FEATURE: All 8 Update API Endpoints — Fully Implemented
+  STATUS:  COMPLETED
+  DETAILS:
+    - All endpoints: require database.php, validate primary key,
+      build dynamic SET clause from allowed fields, verify record
+      exists before updating, use prepared statements.
+
+    update/users.php:
+      - Requires user_id. Allowed fields: username, email, name,
+        location, type, password.
+      - Password re-hashed with bcrypt if provided.
+      - last_login auto-updated to current Unix timestamp.
+      - Validates type is "farmer" or "merchant".
+
+    update/crops.php:
+      - Requires crop_id. Allowed fields: name, image, type, price.
+      - last_updated auto-set to current Unix timestamp.
+
+    update/devices.php:
+      - Requires device_id. Allowed fields: name, location, owned_by.
+      - last_ping auto-set to current Unix timestamp.
+
+    update/data.php:
+      - Requires data_id. Allowed fields: timestamp, temperature,
+        moisture, humidity, gases, nitrogen, device.
+      - No auto-timestamp (corrections keep original or set explicitly).
+
+    update/emails.php:
+      - Requires email_id. Allowed fields: email, name, is_active.
+      - Special handling for is_active=0 (PHP's empty() treats 0 as
+        empty, so explicit === 0 check is used).
+      - Email format validated if provided.
+
+    update/questions.php:
+      - Requires question_id. Allowed fields: question, type, asked_by,
+        upvotes, downvotes, answers.
+
+    update/answers.php:
+      - Requires answer_id. Allowed fields: answer, answered_by,
+        upvotes, downvotes.
+
+    update/warnings.php:
+      - Requires warning_id. Allowed fields: title, details,
+        timestamp, valid_till.
+
+  FEATURE: API-walkthrough.md — Comprehensive Fix (v2.0 → v3.0)
+  STATUS:  COMPLETED
+  DETAILS:
+    - Fixed warnings schema: changed int(11) to text for title/details,
+      removed outdated "Schema Note" about needing ALTER TABLE.
+    - Replaced ALL date string examples ("2026-02-11 08:00:00") with
+      Unix timestamps throughout the document.
+    - Fixed CREATE docs to reflect auto-set fields:
+      • crops: removed last_updated from required (auto-set)
+      • devices: removed last_ping from required (auto-set)
+      • data: removed timestamp from required (auto-set)
+      • emails: removed subscribed_at from required (auto-set)
+      • questions: removed upvotes/downvotes/answers from request
+        (auto-initialized to "0"/"0"/"")
+      • answers: added question_id as required, documented auto-append
+        behavior, removed manual update note
+      • warnings: removed timestamp from required (auto-set)
+      • users: noted bcrypt hashing, updated field descriptions
+    - Fixed READ docs to match actual implementations:
+      • users: removed type/username filters (only user_id supported)
+      • crops: removed name filter
+      • questions: removed asked_by filter
+      • answers: changed to question_id filter (WHERE IN lookup)
+      • emails: added {"all": true} option for inactive subscribers
+      • warnings: added {"active": true} option
+    - Fixed UPDATE docs: documented auto-set fields (last_login,
+      last_updated, last_ping), added asked_by/answered_by to
+      questions/answers update tables.
+    - Bumped version to 3.0.
+
+--- [2026-02-11] Session #9 — Delete APIs + Auth + Walkthrough v4.0 ---
+
+  FEATURE: All 8 Delete API Endpoints — Fully Implemented
+  STATUS:  COMPLETED
+  DETAILS:
+    - All endpoints: require database.php, validate primary key,
+      verify record exists before deleting, use prepared statements.
+
+    delete/users.php:
+      - Requires user_id. Simple delete after existence check.
+
+    delete/crops.php:
+      - Requires crop_id. Simple delete after existence check.
+
+    delete/devices.php:
+      - Requires device_id. Simple delete after existence check.
+
+    delete/data.php:
+      - Requires data_id. Simple delete after existence check.
+
+    delete/emails.php:
+      - Requires email_id. Hard delete (permanent removal).
+      - For soft-delete, use update/emails.php with is_active=0.
+
+    delete/questions.php:
+      - Requires question_id. CASCADE DELETE — automatically deletes
+        all answers linked via the question's comma-separated
+        answers field (parses IDs → DELETE WHERE IN).
+
+    delete/answers.php:
+      - Requires answer_id. AUTO-CLEANUP — scans all questions and
+        removes the deleted answer_id from any parent question's
+        comma-separated answers field.
+
+    delete/warnings.php:
+      - Requires warning_id. Simple delete after existence check.
+
+  FEATURE: auth.php — Authentication & Session Management
+  STATUS:  COMPLETED
+  DETAILS:
+    - Dual-mode file: endpoint mode (POST) + include mode (require)
+    - Endpoint actions: login, logout, status
+    - Login: validates username/password with bcrypt, regenerates
+      session ID (prevent fixation), stores user data in session,
+      updates last_login timestamp
+    - Logout: clears session data, deletes cookie, destroys session
+    - Status: returns logged-in user data or "Not logged in"
+    - Include mode helpers:
+      • startSecureSession() — safe to call multiple times
+      • isLoggedIn() — checks session state
+      • getLoggedInUser() — returns user data array or null
+      • requireLogin() — sends 401 + exits if not authenticated
+    - Session config: AGROPAN_SESSION cookie, 24hr lifetime,
+      httponly=true, samesite=Lax, secure=false (set true for HTTPS)
+    - Detects include vs direct call via SCRIPT_FILENAME check
+
+  FEATURE: API-walkthrough.md — v3.0 → v4.0
+  STATUS:  COMPLETED
+  DETAILS:
+    - Added full Section 9: Authentication API (login/logout/status
+      endpoints, include mode guide, helper functions table, session
+      data reference, session config table)
+    - Fixed DELETE docs:
+      • questions: documented cascade delete behavior
+      • answers: removed outdated manual update note, documented
+        auto-cleanup of parent question's answers field
+      • emails: added soft-delete alternative note
+    - Added auth.php to directory structure and TOC
+    - Added auth endpoints to Quick Reference table
+    - Added 401 Unauthorized and 405 Method Not Allowed to status codes
+    - Added auth-related error messages
+    - Bumped version to 4.0
+
+================================================================================
+  FILE INVENTORY
+================================================================================
+
+  index.html              — Landing page (single-page, fully rewritten)
+  css/variables.css       — Design tokens (colors, spacing, typography)
+  css/index.css           — Unified stylesheet (reset → responsive)
+  js/animations.js        — Scroll reveal via Intersection Observer
+  js/main.js              — App controller (nav, scroll, counters)
+  js/simulate.js          — DEPRECATED (no longer loaded, kept on disk)
+  docs/architecture.md    — Architecture documentation (v2.0)
+  README.md               — Project overview, hardware guide, features
+  gallery/                — 34 image assets (Nepali agriculture photography)
+  agropan.sql             — Database schema (8 tables)
+  progress.log            — This file
+
+  API/database.php        — PDO connection + helpers (sendResponse,
+                            getJsonInput, notifyAllSubscribers)
+  API/auth.php             — Authentication & session management
+                            (login/logout/status + include helpers)
+  API/API-walkthrough.md  — Full API documentation (v4.0, 35 endpoints)
+  API/create/             — 8 PHP files — FULLY IMPLEMENTED
+  API/read/               — 8 PHP files — FULLY IMPLEMENTED
+  API/update/             — 8 PHP files — FULLY IMPLEMENTED
+  API/delete/             — 8 PHP files — FULLY IMPLEMENTED
+
+================================================================================
+  NOTES
+================================================================================
+
+  - Landing page is now a feature showcase for the full platform
+    (no mock data or simulation on the landing page)
+  - Four platform pillars: IoT, Marketplace, Forum, Admin Alerts
+  - simulate.js still exists on disk but is not loaded — can be deleted
+  - Create APIs: DONE (8/8), Read APIs: DONE (8/8),
+    Update APIs: DONE (8/8), Delete APIs: DONE (8/8)
+  - auth.php: login/logout/status endpoint + session helpers
+    for use across all pages (requireLogin, isLoggedIn, etc.)
+  - database.php provides shared PDO connection + response/input helpers
+  - Email notifications fire automatically from create/data.php and
+    create/warnings.php (LIVE — not commented out)
+  - All timestamps are Unix timestamps (time()) — no date strings
+  - User passwords are bcrypt-hashed (password_hash + password_verify)
+  - answers create auto-appends answer_id to parent question
+  - answers delete auto-removes answer_id from parent question
+  - questions delete cascades to delete all linked answers
+  - API-walkthrough.md v4.0 — all docs match actual implementations
+  - For production email delivery, replace mail() with PHPMailer or
+    a transactional email API (SendGrid, Mailgun)
+  - For production auth, set session secure=true (requires HTTPS)
+  - All images are real Nepali agriculture photography (no stock/AI)
+  - CSS architecture is token-driven: changing --color-primary updates
+    the entire design system
+
+================================================================================

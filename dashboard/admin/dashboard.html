@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Overview — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Admin Overview</h1>
+        <p class="page__subtitle">
+          Platform-wide statistics and system health at a glance.
+        </p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--primary">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Total Users</div>
+            <div class="stat-card__value" id="statUsers">—</div>
+            <div class="stat-card__meta">Registered accounts</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--accent">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Devices</div>
+            <div class="stat-card__value" id="statDevices">—</div>
+            <div class="stat-card__meta">IoT sensors registered</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--green">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Data Points</div>
+            <div class="stat-card__value" id="statData">—</div>
+            <div class="stat-card__meta">Sensor readings</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--secondary">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Crops</div>
+            <div class="stat-card__value" id="statCrops">—</div>
+            <div class="stat-card__meta">Marketplace listings</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Active Warnings</div>
+            <div class="stat-card__value" id="statWarnings">—</div>
+            <div class="stat-card__meta">Emergency alerts</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--danger">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Subscribers</div>
+            <div class="stat-card__value" id="statEmails">—</div>
+            <div class="stat-card__meta">Email subscribers</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--primary">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Questions</div>
+            <div class="stat-card__value" id="statQuestions">—</div>
+            <div class="stat-card__meta">Forum questions</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--accent">
+            <i class="fa-solid fa-reply"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Answers</div>
+            <div class="stat-card__value" id="statAnswers">—</div>
+            <div class="stat-card__meta">Forum answers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid content-grid--3">
+        <!-- Left: Quick Actions + Latest Users -->
+        <div>
+          <div class="card" style="margin-bottom: var(--space-lg)">
+            <div class="card__header">
+              <h3 class="card__title">Quick Actions</h3>
+            </div>
+            <div class="card__body">
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm)">
+                <button
+                  class="btn btn--primary btn--sm"
+                  onclick="parent.navigateTo('users')"
+                >
+                  <i class="fa-solid fa-user-plus"></i> Add User
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  onclick="parent.navigateTo('warnings')"
+                >
+                  <i class="fa-solid fa-triangle-exclamation"></i> New Warning
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  onclick="parent.navigateTo('devices')"
+                >
+                  <i class="fa-solid fa-microchip"></i> Manage Devices
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  onclick="parent.navigateTo('crops')"
+                >
+                  <i class="fa-solid fa-wheat-awn"></i> Manage Crops
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">Recent Users</h3>
+              <button class="card__action" onclick="parent.navigateTo('users')">
+                View All
+              </button>
+            </div>
+            <div class="card__body card__body--flush">
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentUsersBody">
+                    <tr>
+                      <td
+                        colspan="3"
+                        style="
+                          text-align: center;
+                          color: var(--color-text-light);
+                          padding: var(--space-xl);
+                        "
+                      >
+                        <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Active Warnings + Activity -->
+        <div>
+          <div class="card" style="margin-bottom: var(--space-lg)">
+            <div class="card__header">
+              <h3 class="card__title">Active Warnings</h3>
+              <button
+                class="card__action"
+                onclick="parent.navigateTo('warnings')"
+              >
+                View All
+              </button>
+            </div>
+            <div class="card__body" id="warningsContainer">
+              <div
+                style="
+                  text-align: center;
+                  color: var(--color-text-light);
+                  padding: var(--space-md);
+                "
+              >
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">System Activity</h3>
+            </div>
+            <div class="card__body">
+              <div class="activity-list" id="activityFeed">
+                <div class="activity-item">
+                  <div class="activity-item__icon stat-card__icon--primary">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                  </div>
+                  <div class="activity-item__content">
+                    <div class="activity-item__text">Admin session started</div>
+                    <div class="activity-item__time">Just now</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

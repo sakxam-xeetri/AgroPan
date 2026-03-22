@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmers — AgroPan Merchant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      .farmer-card {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+      }
+      .farmer-card__avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(46, 125, 101, 0.1);
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-lg);
+        font-weight: var(--weight-bold);
+        flex-shrink: 0;
+      }
+      .farmer-card__info {
+        flex: 1;
+        min-width: 0;
+      }
+      .farmer-card__name {
+        font-weight: var(--weight-semibold);
+        font-size: var(--text-base);
+        margin-bottom: 2px;
+      }
+      .farmer-card__detail {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        margin-bottom: 2px;
+      }
+      .farmer-card__detail i {
+        font-size: var(--text-xs);
+        width: 14px;
+        text-align: center;
+      }
+      .farmer-card__contact {
+        display: flex;
+        gap: var(--space-sm);
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--color-border-light);
+      }
+      .farmer-card__devices {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        font-size: var(--text-xs);
+        color: var(--color-primary);
+        margin-top: var(--space-sm);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Farmers</h1>
+        <p class="page__subtitle">
+          Connect with local farmers to source fresh produce directly.
+        </p>
+        <div class="page__actions">
+          <input
+            type="text"
+            class="form-input"
+            id="farmerSearch"
+            placeholder="Search by name or location…"
+            style="max-width: 300px"
+          />
+        </div>
+      </div>
+
+      <!-- Stats mini bar -->
+      <div
+        style="
+          display: flex;
+          gap: var(--space-lg);
+          margin-bottom: var(--space-xl);
+          flex-wrap: wrap;
+        "
+      >
+        <div
+          style="
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+          "
+        >
+          <i class="fa-solid fa-users" style="color: var(--color-primary)"></i>
+          <span id="farmerCount">0</span> farmers found
+        </div>
+      </div>
+
+      <!-- Farmers List -->
+      <div class="item-list" id="farmersList">
+        <div
+          style="
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+          "
+        >
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem"></i>
+          <p style="margin-top: var(--space-md)">Loading farmers…</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/farmers.js"></script>
+  </body>
+</html>

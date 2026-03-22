@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile — AgroPan Merchant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--space-2xl) var(--space-lg);
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-xl);
+      }
+      .profile-header__avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--color-secondary);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-bold);
+        margin-bottom: var(--space-md);
+      }
+      .profile-header__name {
+        font-size: var(--text-xl);
+        font-weight: var(--weight-bold);
+        margin-bottom: var(--space-xs);
+      }
+      .profile-header__meta {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        justify-content: center;
+      }
+      .profile-header__meta span {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      .profile-header__meta i {
+        font-size: var(--text-xs);
+        color: var(--color-text-light);
+      }
+      .profile-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+      .profile-form__row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      @media (min-width: 480px) {
+        .profile-form__row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .profile-header {
+          flex-direction: row;
+          text-align: left;
+          gap: var(--space-xl);
+        }
+        .profile-header__meta {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">My Profile</h1>
+        <p class="page__subtitle">View and update your account information.</p>
+      </div>
+
+      <div id="profileAlert"></div>
+
+      <!-- Profile Header Card -->
+      <div class="profile-header" id="profileHeader">
+        <div class="profile-header__avatar" id="profileAvatar">M</div>
+        <div>
+          <div class="profile-header__name" id="profileName">—</div>
+          <div class="profile-header__meta">
+            <span
+              ><i class="fa-solid fa-user-tag"></i>
+              <span id="profileType">—</span></span
+            >
+            <span
+              ><i class="fa-solid fa-location-dot"></i>
+              <span id="profileLocation">—</span></span
+            >
+            <span
+              ><i class="fa-solid fa-clock"></i> Last login:
+              <span id="profileLastLogin">—</span></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Profile -->
+      <div class="card">
+        <div class="card__header">
+          <h3 class="card__title">Edit Profile</h3>
+        </div>
+        <div class="card__body">
+          <form class="profile-form" id="profileForm">
+            <div class="profile-form__row">
+              <div>
+                <label class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="editName"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="editUsername"
+                  placeholder="Username"
+                  disabled
+                  style="opacity: 0.6; cursor: not-allowed"
+                />
+              </div>
+            </div>
+            <div class="profile-form__row">
+              <div>
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-input"
+                  id="editEmail"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div>
+                <label class="form-label">Phone</label>
+                <input
+                  type="tel"
+                  class="form-input"
+                  id="editPhone"
+                  placeholder="98XXXXXXXX"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Location</label>
+              <input
+                type="text"
+                class="form-input"
+                id="editLocation"
+                placeholder="District / City"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: var(--space-sm);
+                margin-top: var(--space-sm);
+              "
+            >
+              <button
+                type="submit"
+                class="btn btn--primary btn--sm"
+                id="saveProfile"
+              >
+                <i class="fa-solid fa-check"></i> Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="card" style="margin-top: var(--space-lg)">
+        <div class="card__header">
+          <h3 class="card__title">Change Password</h3>
+        </div>
+        <div class="card__body">
+          <form class="profile-form" id="passwordForm">
+            <div class="profile-form__row">
+              <div>
+                <label class="form-label">New Password</label>
+                <input
+                  type="password"
+                  class="form-input"
+                  id="newPassword"
+                  placeholder="Min. 8 characters"
+                />
+              </div>
+              <div>
+                <label class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-input"
+                  id="confirmPassword"
+                  placeholder="Re-enter password"
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="btn btn--ghost btn--sm"
+                id="changePassword"
+              >
+                <i class="fa-solid fa-key"></i> Update Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merchants — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      .merchant-card {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+      }
+      .merchant-card__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(139, 94, 60, 0.1);
+        color: var(--color-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-lg);
+        font-weight: var(--weight-bold);
+        flex-shrink: 0;
+      }
+      .merchant-card__info {
+        flex: 1;
+        min-width: 0;
+      }
+      .merchant-card__name {
+        font-weight: var(--weight-semibold);
+        margin-bottom: 2px;
+      }
+      .merchant-card__detail {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      .merchant-card__detail i {
+        font-size: var(--text-xs);
+      }
+      .merchant-card__contact {
+        display: flex;
+        gap: var(--space-sm);
+        margin-top: var(--space-sm);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Merchants</h1>
+        <p class="page__subtitle">
+          Connect with merchants looking to buy your crops.
+        </p>
+        <div class="page__actions">
+          <input
+            type="text"
+            class="form-input"
+            id="merchantSearch"
+            placeholder="Search by name or location…"
+            style="max-width: 280px"
+          />
+        </div>
+      </div>
+
+      <!-- Merchants List -->
+      <div class="item-list" id="merchantsList">
+        <div
+          style="
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+          "
+        >
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem"></i>
+          <p style="margin-top: var(--space-md)">Loading merchants…</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/merchants.js"></script>
+  </body>
+</html>

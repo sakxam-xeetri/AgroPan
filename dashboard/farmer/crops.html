@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketplace — AgroPan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      .crop-card__image {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--space-md);
+        background: var(--color-bg);
+      }
+      .crop-card__name {
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+        margin-bottom: var(--space-xs);
+      }
+      .crop-card__price {
+        font-size: var(--text-lg);
+        font-weight: var(--weight-bold);
+        color: var(--color-primary);
+        margin-bottom: var(--space-sm);
+      }
+      .crop-card__meta {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <h1 class="page__title">Marketplace</h1>
+        <p class="page__subtitle">List your crops and browse the market.</p>
+        <div class="page__actions">
+          <button class="btn btn--primary btn--sm" id="addCropBtn">
+            <i class="fa-solid fa-plus"></i> List New Crop
+          </button>
+          <select
+            class="form-input form-select"
+            id="cropFilter"
+            style="max-width: 180px"
+          >
+            <option value="">All Types</option>
+            <option value="grain">Grain</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="fruit">Fruit</option>
+            <option value="spice">Spice</option>
+            <option value="pulse">Pulse</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cropAlert"></div>
+
+      <!-- Crops Grid -->
+      <div class="item-list" id="cropsList">
+        <div
+          style="
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+          "
+        >
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem"></i>
+          <p style="margin-top: var(--space-md)">Loading crops…</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add / Edit Crop Modal -->
+    <div class="modal-overlay" id="cropModal">
+      <div class="modal">
+        <div class="modal__header">
+          <h3 class="modal__title" id="cropModalTitle">List New Crop</h3>
+          <button class="modal__close" id="closeCropModal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body">
+          <form id="cropForm">
+            <div style="margin-bottom: var(--space-md)">
+              <label class="form-label">Crop Name *</label>
+              <input
+                type="text"
+                class="form-input"
+                id="cropName"
+                placeholder="e.g. Basmati Rice"
+                required
+              />
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-md);
+                margin-bottom: var(--space-md);
+              "
+            >
+              <div>
+                <label class="form-label">Type *</label>
+                <select class="form-input form-select" id="cropType" required>
+                  <option value="">Select type</option>
+                  <option value="grain">Grain</option>
+                  <option value="vegetable">Vegetable</option>
+                  <option value="fruit">Fruit</option>
+                  <option value="spice">Spice</option>
+                  <option value="pulse">Pulse</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Price (NPR/kg) *</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="cropPrice"
+                  placeholder="e.g. 120"
+                  required
+                />
+              </div>
+            </div>
+            <div style="margin-bottom: var(--space-md)">
+              <label class="form-label">Image URL</label>
+              <input
+                type="text"
+                class="form-input"
+                id="cropImage"
+                placeholder="https://... (optional)"
+              />
+            </div>
+            <input type="hidden" id="cropEditId" />
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost btn--sm" id="cancelCropModal">
+            Cancel
+          </button>
+          <button class="btn btn--primary btn--sm" id="saveCrop">
+            Save Crop
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/crops.js"></script>
+  </body>
+</html>

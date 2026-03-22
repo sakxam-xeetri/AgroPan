@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview — AgroPan Merchant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/fontawesome.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v7.1.0/css/solid.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header -->
+      <div class="page__header">
+        <h1 class="page__title">Overview</h1>
+        <p class="page__subtitle">
+          Welcome back! Here's your marketplace summary.
+        </p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--primary">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Available Crops</div>
+            <div class="stat-card__value" id="statCrops">—</div>
+            <div class="stat-card__meta">Listed on marketplace</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--accent">
+            <i class="fa-solid fa-tractor"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Active Farmers</div>
+            <div class="stat-card__value" id="statFarmers">—</div>
+            <div class="stat-card__meta">Registered on AgroPan</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--secondary">
+            <i class="fa-solid fa-tags"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Crop Types</div>
+            <div class="stat-card__value" id="statTypes">—</div>
+            <div class="stat-card__meta">Categories available</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div class="stat-card__body">
+            <div class="stat-card__label">Active Warnings</div>
+            <div class="stat-card__value" id="statAlerts">—</div>
+            <div class="stat-card__meta">In your region</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid content-grid--3">
+        <!-- Left Column -->
+        <div>
+          <!-- Latest Crop Listings -->
+          <div class="card" style="margin-bottom: var(--space-lg)">
+            <div class="card__header">
+              <h3 class="card__title">Latest Crop Listings</h3>
+              <button class="card__action" onclick="parent.navigateTo('crops')">
+                View All
+              </button>
+            </div>
+            <div class="card__body card__body--flush">
+              <div class="table-wrap">
+                <table class="table" id="latestCrops">
+                  <thead>
+                    <tr>
+                      <th>Crop</th>
+                      <th>Type</th>
+                      <th>Price</th>
+                      <th>Updated</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cropsBody">
+                    <tr>
+                      <td
+                        colspan="4"
+                        style="
+                          text-align: center;
+                          color: var(--color-text-light);
+                          padding: var(--space-xl);
+                        "
+                      >
+                        <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">Quick Actions</h3>
+            </div>
+            <div class="card__body">
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm)">
+                <button
+                  class="btn btn--primary btn--sm"
+                  onclick="parent.navigateTo('crops')"
+                >
+                  <i class="fa-solid fa-basket-shopping"></i> Browse Crops
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  onclick="parent.navigateTo('farmers')"
+                >
+                  <i class="fa-solid fa-tractor"></i> Find Farmers
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  onclick="parent.navigateTo('profile')"
+                >
+                  <i class="fa-solid fa-user-gear"></i> Edit Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+          <!-- Active Warnings -->
+          <div class="card" style="margin-bottom: var(--space-lg)">
+            <div class="card__header">
+              <h3 class="card__title">Active Warnings</h3>
+            </div>
+            <div class="card__body" id="warningsContainer">
+              <div
+                style="
+                  text-align: center;
+                  color: var(--color-text-light);
+                  padding: var(--space-md);
+                "
+              >
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading…
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">Activity</h3>
+            </div>
+            <div class="card__body">
+              <div class="activity-list" id="activityFeed">
+                <div class="activity-item">
+                  <div class="activity-item__icon stat-card__icon--primary">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                  </div>
+                  <div class="activity-item__content">
+                    <div class="activity-item__text">Loading activity…</div>
+                    <div class="activity-item__time">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
