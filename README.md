@@ -1,22 +1,31 @@
-<div align="center">
-  <img src="gallery/logo-agropan.jpg" alt="AgroPan Logo" width="200"/>
+<h1 align="center">
+  <img src="gallery/logo-agropan.jpg" alt="AgroPan Logo" width="120" style="border-radius:20%"/>
+  <br/>
+  🌾 AgroPan
+</h1>
 
-  # 🌾 AgroPan
-  **Smart Agriculture Platform for Nepal**
-  
-  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-  [![Platform: Web & IoT](https://img.shields.io/badge/Platform-Web%20%7C%20IoT-blue)](#)
-  [![Hardware: ESP32-S3](https://img.shields.io/badge/Hardware-ESP32--S3-orange)](#)
-  [![Status: Active](https://img.shields.io/badge/Status-Active-success)](#)
+<p align="center">
+  <strong>Smart Agriculture Platform for Nepal</strong>
+</p>
 
-  > *"AgroPan is not just a website — it's an agriculture ecosystem: monitor, trade, discuss, and stay safe — powered by real IoT hardware."*
-</div>
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"/></a>
+  <img src="https://img.shields.io/badge/Platform-Web%20%7C%20IoT-blue" alt="Platform: Web & IoT"/>
+  <img src="https://img.shields.io/badge/Hardware-ESP32--S3-orange" alt="Hardware: ESP32-S3"/>
+  <img src="https://img.shields.io/badge/Status-Active-success" alt="Status: Active"/>
+</p>
+
+<p align="center">
+  <em>"AgroPan is not just a website — it's an agriculture ecosystem: monitor, trade, discuss, and stay safe — powered by real IoT hardware."</em>
+</p>
+
+<hr/>
+
+<p align="center">
+  AgroPan is a Nepal-focused smart agriculture platform combining a <b>production-ready ESP32-S3 IoT sensor node</b> with a <b>digital marketplace</b>, <b>community forum</b>, and <b>emergency alert system</b>. It connects farmers, merchants, and administrators — enabling field monitoring, direct trade, knowledge sharing, and disaster preparedness.
+</p>
 
 <br/>
-
-AgroPan is a Nepal-focused smart agriculture platform combining a **production-ready ESP32-S3 IoT sensor node** with a **digital marketplace**, **community forum**, and **emergency alert system**. It connects farmers, merchants, and administrators — enabling field monitoring, direct trade, knowledge sharing, and disaster preparedness.
-
----
 
 ## 📑 Table of Contents
 
