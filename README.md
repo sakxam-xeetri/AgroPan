@@ -1,12 +1,24 @@
-# 🌾 AgroPan — Smart Agriculture Platform for Nepal
+<div align="center">
+  <img src="gallery/logo-agropan.jpg" alt="AgroPan Logo" width="200"/>
 
-> **"AgroPan is not just a website — it's an agriculture ecosystem: monitor, trade, discuss, and stay safe — powered by real IoT hardware."**
+  # 🌾 AgroPan
+  **Smart Agriculture Platform for Nepal**
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+  [![Platform: Web & IoT](https://img.shields.io/badge/Platform-Web%20%7C%20IoT-blue)](#)
+  [![Hardware: ESP32-S3](https://img.shields.io/badge/Hardware-ESP32--S3-orange)](#)
+  [![Status: Active](https://img.shields.io/badge/Status-Active-success)](#)
+
+  > *"AgroPan is not just a website — it's an agriculture ecosystem: monitor, trade, discuss, and stay safe — powered by real IoT hardware."*
+</div>
+
+<br/>
 
 AgroPan is a Nepal-focused smart agriculture platform combining a **production-ready ESP32-S3 IoT sensor node** with a **digital marketplace**, **community forum**, and **emergency alert system**. It connects farmers, merchants, and administrators — enabling field monitoring, direct trade, knowledge sharing, and disaster preparedness.
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
 - [The Problem](#the-problem)
 - [The Solution](#the-solution)
@@ -30,11 +42,11 @@ AgroPan is a Nepal-focused smart agriculture platform combining a **production-r
 
 ---
 
-## The Problem
+## 🚨 The Problem
 
 Nepal's 3.4 million farming households face fragmented access to market information, limited direct connections to buyers, no centralized forum for agricultural knowledge, and no affordable way to monitor field conditions or receive early warnings about disasters and disease outbreaks.
 
-## The Solution
+## 💡 The Solution
 
 AgroPan is a **four-pillar smart agriculture platform**:
 
@@ -45,7 +57,7 @@ AgroPan is a **four-pillar smart agriculture platform**:
 
 ---
 
-## System Architecture
+## 🏗 System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -602,7 +614,7 @@ void loop() {}
 
 ---
 
-## Folder Structure
+## 📂 Folder Structure
 
 ```
 agropan/
@@ -646,7 +658,7 @@ agropan/
 
 ---
 
-## Key Features
+## ✨ Key Features
 
 ### IoT Sensor Node
 
@@ -706,13 +718,13 @@ agropan/
 
 ---
 
-## Team
+## 👥 Team
 
 Built with purpose at **Ren Hackathon Spark** — for Nepal, by people who care about Nepal's food future.
 
 ---
 
-## License
+## 📄 License
 
 MIT — Open source & policy-grade.
 
