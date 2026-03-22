@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="gallery/logo-agropan.jpg" alt="AgroPan Logo" width="120" style="border-radius:20%"/>
+  <img src="gallery/logo-agropan.jpg" alt="AgroPan Logo" width="120" style="border-radius:50%"/>
   <br/>
   🌾 AgroPan
 </h1>
