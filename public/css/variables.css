@@ -1,0 +1,120 @@
+/* ============================================================
+   AgroPan — Design Tokens & CSS Variables
+   ============================================================
+   All visual constants are defined here so every component
+   draws from a single source of truth. Change a value once
+   and the entire interface updates.
+   ============================================================ */
+
+:root {
+  /* ── Color System ──────────────────────────────────────────
+     Derived from Nepal's geography:
+     greens of the hills, brown of the earth, teal of
+     monsoon skies, amber of harvest warnings.
+  */
+  --color-primary:    #2E7D65;   /* AgroPan Green — trust, growth            */
+  --color-primary-light: #3a9e80; /* Lighter shade for hover states           */
+  --color-primary-dark:  #225e4c; /* Darker shade for active / pressed        */
+
+  --color-secondary:  #8B5E3C;   /* Earth Brown — grounded, authentic         */
+  --color-secondary-light: #a87a58;
+
+  --color-accent:     #2F8F9D;   /* Monsoon Teal — data, insight, clarity     */
+  --color-accent-light: #3ab0c0;
+
+  --color-alert:      #F2A900;   /* Risk Amber — attention without panic      */
+  --color-alert-light: #ffc940;
+
+  --color-bg:         #F7F7F4;   /* Fog White — calm paper-like background    */
+  --color-bg-card:    #FFFFFF;   /* Card surfaces sit slightly above bg       */
+  --color-bg-dark:    #1E1E1E;   /* Footer / dark sections                    */
+
+  --color-text:       #2B2B2B;   /* Charcoal Black — high readability         */
+  --color-text-muted: #6B6B6B;   /* Secondary copy, captions                  */
+  --color-text-light: #999999;   /* Tertiary copy, timestamps                 */
+  --color-text-on-dark: #E8E8E4; /* Text on dark backgrounds                  */
+
+  --color-border:     #E0DDD6;   /* Subtle dividers                           */
+  --color-border-light: #EDECE8;
+
+  /* ── Risk-level semantic colors ───────────────────────────── */
+  --risk-low:    #2E7D65;
+  --risk-medium: #F2A900;
+  --risk-high:   #D94F3B;
+
+  /* ── Typography ────────────────────────────────────────────
+     Inter is used everywhere for its clean geometry.
+     Poppins adds warmth to hero headings.
+     Noto Sans ensures Nepali script renders correctly.
+  */
+  --font-heading:  'Poppins', 'Inter', sans-serif;
+  --font-body:     'Inter', 'Noto Sans', sans-serif;
+  --font-data:     'Inter', monospace;
+
+  /* Type scale — mobile-first, rem-based */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  2rem;       /* 32px */
+  --text-3xl:  2.5rem;     /* 40px */
+  --text-4xl:  3.25rem;    /* 52px */
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight:   1.25;
+  --leading-normal:  1.6;
+  --leading-relaxed: 1.8;
+
+  /* ── Spacing ───────────────────────────────────────────────
+     8px base grid. Every spacing token is a multiple of 8
+     so elements align predictably.
+  */
+  --space-xs:  0.25rem;  /*  4px */
+  --space-sm:  0.5rem;   /*  8px */
+  --space-md:  1rem;     /* 16px */
+  --space-lg:  1.5rem;   /* 24px */
+  --space-xl:  2rem;     /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+  --space-4xl: 6rem;     /* 96px */
+
+  /* ── Layout ────────────────────────────────────────────────  */
+  --content-max:  1200px;
+  --content-narrow: 800px;
+
+  /* ── Radii ─────────────────────────────────────────────────
+     Intentionally generous to feel modern but not bubbly.
+  */
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-pill: 999px;
+
+  /* ── Shadows ───────────────────────────────────────────────
+     Soft, diffused shadows convey depth without heaviness.
+  */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:  0 8px 30px rgba(0,0,0,0.10);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.12);
+
+  /* ── Transitions ───────────────────────────────────────────  */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   500ms;
+
+  /* ── Z-index layers ────────────────────────────────────────  */
+  --z-base:    1;
+  --z-card:    10;
+  --z-sticky:  100;
+  --z-overlay: 500;
+  --z-modal:   1000;
+}
